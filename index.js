@@ -1,9 +1,9 @@
-import { StatusBar } from 'expo-status-bar';
+/**
+ * @format
+ */
 import React from 'react';
-import { StyleSheet, Text, View } from 'react-native';
-import Main from './components/Main'
-
 import {AppRegistry} from 'react-native';
+import App from './App';
 import {name as appName} from './app.json';
 import { Provider } from 'react-redux';
 import generateStore from './redux/store';
@@ -15,31 +15,11 @@ let client = new ApolloClient({
     uri:"https://rickandmortyapi.com/graphql"
 })
 
-
+let WithStore = () => <Provider store={store}><App /></Provider>
+let WithApollo = () => <ApolloProvider client={client}><WithStore></WithStore></ApolloProvider>
 
 // If you want your app to work offline and load faster, you can change
 // unregister() to register() below. Note this comes with some pitfalls.
 // Learn more about service workers: https://bit.ly/CRA-PWA
 
-/* AppRegistry.registerComponent(appName, () => WithApollo);
- */
-export default function App() {
-  return (
-    <View>
-    <ApolloProvider client={client}>
-    <Provider store={store}>
-      <Main></Main>
-    </Provider>
-    </ApolloProvider>
-    </View>
-  );
-}
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-});
+AppRegistry.registerComponent(appName, () => WithApollo);
