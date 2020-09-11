@@ -15,20 +15,20 @@ export default function Render({  formSearch, handleClick, render, data, handleC
     return (
         <>
         <ScrollView>
-            <Button handleClickPrev={handleClickPrev} message={'<'} title='<'/>
-            <Button handleClickNext={handleClick} message={'>'} title='>'/>
+            <Button onPress={handleClick} message={'>'} title='siguiente'/>
+            <Button onPress={handleClickPrev} message={'>'} title='anterior'/>
             <View className="container-render">
                 {formSearch.length >= 3 && data.filter(data => data.name.toLowerCase().includes(formSearch)).map((data, i) => {
                     return (
-                        <Card name={data.name} image={data.image} i={i}></Card>
+                        <Card name={data.name} image={data.image} key={i}></Card>
                     )
                 })}
                {/* {formSearch && formSearch.length < 3 &&
                     <Loading message={'Mientras buscas, tomá tu birrita (y dame 3 caracteres)'}/>}  */}
                 {!formSearch && data.map(render)}
             </View>
-            <Button handleClickPrev={handleClickPrev} message={'<'} title='press me'/>
-            <Button handleClickNext={handleClick} message={'>'} title='press me'/>
+            <Button onPress={handleClick} message={'<'} title='siguiente'/>
+            <Button onPress={handleClickPrev} message={'>'} title='anterior'/>
             </ScrollView>
 </>
     )

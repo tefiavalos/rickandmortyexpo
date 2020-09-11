@@ -13,18 +13,12 @@ import {
 export default function Filter({ filter }) {
     return (
         <View className='container-filter'>
-            <Text class="container-input">
                 
-                <Button onPress={filter} title='characters'/>
-            </Text>
-            <Text  class="container-input">
+                <Button onPress={filter} value="characters" title='characters'/>
                 
-                <Button onPress={filter} value='location' title='locations'/>
-            </Text>
-            <Text class="container-input">
+                <Button onPress={filter} value="location" title='locations'/>
                 
-                <Button onPress={filter} value='episode'  title='episodes'/>
-            </Text>
+                <Button onPress={filter} value="episode"  title='episodes'/>
         </View>
     )
 } 

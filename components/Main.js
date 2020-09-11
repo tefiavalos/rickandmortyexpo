@@ -13,13 +13,14 @@ import {
     View,
     Text,
     StatusBar,
+    Button,
+    TextInput
   } from 'react-native';
 
 
 function Home({ characters, nextPageAction, location, episode, fetching, 
     nextPageEpisodesAction, nextPageLocationAction, prevPageAction, nextPage }) {
       let [valor, setValor] = useState("characters")
-    let [page, setPage] = useState(1)
     const [formSearch, setFormSearch] = useState('');
 
     function renderCharacter(chars, i) {
@@ -46,14 +47,15 @@ function Home({ characters, nextPageAction, location, episode, fetching,
         )
     }
 
-    function filter(e) {
+   /*  function filter(text) {
         return (
-            setValor(e.target.value)
+            setValor(text)
         )
     }
-
-    const handleChange = (e) => {
-        setFormSearch(e.target.value);
+ */
+    const handleChange = (text) => {
+        setFormSearch(text);
+        console.log(formSearch)
     } 
 
     /* if(fetching){
@@ -61,15 +63,25 @@ function Home({ characters, nextPageAction, location, episode, fetching,
             <Loading message={'Mientras carga, toma tu birrita'}/>
         )
     }  */
-  console.log(characters)
+
     return (
         <ScrollView>
         <View>
-         <Filter filter={filter}></Filter>
+        <View className='container-filter'>
+                
+                <Button onPress={() =>setValor("characters")} value="characters" title='characters'/>
+                
+                <Button onPress={() =>setValor("location")} value="location" title='locations'/>
+                
+                <Button onPress={() =>setValor("episode")}  title='episodes'/>
+        </View>
             <View className="card-container">
             {valor === "characters" &&
             <>
-            <Search handleChange={handleChange} formSearch={formSearch}></Search>
+            <View>
+            <TextInput type="text" placeholder="Search" onChangeText={handleChange}
+                value={formSearch} name="Characters"/>
+                </View>
             <Render 
             handleClickPrev={prevPageAction}
             handleClick={nextPageAction} 

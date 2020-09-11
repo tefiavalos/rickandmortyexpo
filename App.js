@@ -25,13 +25,12 @@ let client = new ApolloClient({
  */
 export default function App() {
   return (
-    <View>
     <ApolloProvider client={client}>
     <Provider store={store}>
       <Main></Main>
     </Provider>
-    </ApolloProvider>
-    </View>
+    </ApolloProvider> 
+    
   );
 }
 

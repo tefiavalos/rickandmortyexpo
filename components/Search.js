@@ -10,7 +10,7 @@ import {
 export default function Search({handleChange, formSearch}) {
     return (
           <View>
-            <TextInput type="text" placeholder="Search" onChange={handleChange}
+            <TextInput type="text" placeholder="Search" onChangeText={handleChange}
                 value={formSearch} name="Characters"/>
                 </View>
        

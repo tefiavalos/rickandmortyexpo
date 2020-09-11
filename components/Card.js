@@ -34,7 +34,7 @@ export default function Card({
                 <Text>
                     {name}
                 </Text>
-                {image ? <Image className="data-image" alt={name} source={{ uri: image}} style={{width: 400, height: 400}}/> : 
+                {image ? <Image className="data-image" alt={name} source={{ uri: image}} style={{width: 200, height: 200}}/> : 
                 <Text className='p-card'>{dimension || episode}</Text>}
                 <Button className='button-card' /* onClick={handleOpen} */ title='see more'/>
                  {/* <Modal
