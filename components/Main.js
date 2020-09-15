@@ -66,14 +66,17 @@ function Home({ characters, nextPageAction, location, episode, fetching,
 
     return (
         <ScrollView>
-        <View>
-        <View className='container-filter'>
-                
+        <View style={styles.container}>
+        <View style={styles.containerButtons}>
+                <View style={styles.button}>
                 <Button onPress={() =>setValor("characters")} value="characters" title='characters'/>
-                
+                </View>
+                <View style={styles.button}>
                 <Button onPress={() =>setValor("location")} value="location" title='locations'/>
-                
+                </View>
+                <View style={styles.button}>
                 <Button onPress={() =>setValor("episode")}  title='episodes'/>
+                </View>
         </View>
             <View className="card-container">
             {valor === "characters" &&
@@ -129,5 +132,18 @@ function mapState({ data }) {
         fetching: data.fetching
     }
 }
+
+const styles = StyleSheet.create({
+    container: {
+        alignItems: 'center'
+    },
+    containerButtons: {
+        width: '100%',
+        flexDirection: 'row'
+    },
+    button: {
+      width: 120
+    },
+  });
 
 export default connect(mapState, { nextPageAction, nextPageEpisodesAction, nextPageLocationAction, prevPageAction })(Home)

@@ -1,58 +1,65 @@
 import React, { useState } from 'react'
 
-/* import Modal from '../modal/Modal' */
-/* import Button from '../button/Button' 
-import './card.css' */
- import {
-    SafeAreaView,
+
+import {
     StyleSheet,
     ScrollView,
     View,
     Text,
-    StatusBar,
+    Modal,
     Button,
     Image
-  } from 'react-native';
+} from 'react-native';
 
 export default function Card({
-    name, image, dimension, episode, type, created, gender, species, residents, data, episodeCharacter
+    name, image, dimension, episode, type, created, gender, species, residents, episodeCharacter
 }) {
-    /* const [open, setOpen] = React.useState(false);
 
-    const handleOpen = () => {
-        setOpen(true);
-    };
-
-    const handleClose = () => {
-        setOpen(false);
-    }; */
+    const [modal, setModal] = useState(false)
 
     return (
         <>
-        <ScrollView>
-            <View className="container">
-                <Text>
-                    {name}
-                </Text>
-                {image ? <Image className="data-image" alt={name} source={{ uri: image}} style={{width: 200, height: 200}}/> : 
-                <Text className='p-card'>{dimension || episode}</Text>}
-                <Button className='button-card' /* onClick={handleOpen} */ title='see more'/>
-                 {/* <Modal
-                    handleClose={handleClose}
-                    handleOpen={handleOpen}
-                    open={open}
-                    name={name}
-                    type={type}
-                    created={created}
-                    gender={gender}
-                    species={species}
-                    image={image}
-                    dimension={dimension}
-                    episode={episode}
-                    episodeCharacters={episodeCharacter} 
-                    residents={residents}></Modal>  */}
-            </View>
+            <ScrollView>
+                <View className="container">
+                    <Text>
+                        {name}
+                    </Text>
+                    {image ? <Image className="data-image" alt={name} source={{ uri: image }} style={{ width: 200, height: 200 }} /> :
+                        <Text >{dimension || episode}</Text>}
+                        <Button className='button-card'  onPress={() => {setModal(true)}}  title='see more'/>
+                    </View> 
             </ScrollView>
+            <Modal visible={modal} animationType='fade'>
+                        <Text>{type}</Text>
+                        <Text>{created}</Text>
+                        <Text>{gender}</Text>
+                        <Text>{species}</Text>
+                        {image && <Image className="data-image" alt={name} source={{ uri: image }} style={{ width: 200, height: 200 }} />}
+                        {residents && residents.map((resident, i) => {
+                            if(i < 5){
+                                return(
+                                    <Text key={i}>{resident.name}</Text>
+                                )
+                            }
+                        })}
+                        {episodeCharacter && episodeCharacter.map((character, i) => {
+                            if(i < 5){
+                                return(
+                                <Text key={i}>{character.name}</Text>
+                                )
+                            }
+                        })} 
+                        <View style={styles.button}>
+                        <Button onPress={() => { return (setModal(false)) }} title='cerrar'></Button>
+                    </View>
+                    </Modal>
+                    
         </>
     )
 }
+
+const styles = StyleSheet.create({
+                button: {
+                width: 200
+    },
+  });

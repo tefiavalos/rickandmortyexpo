@@ -14,22 +14,39 @@ import {
 export default function Render({  formSearch, handleClick, render, data, handleClickPrev }) {
     return (
         <>
-        <ScrollView>
+        <ScrollView style={styles.button}>
+            <View>
             <Button onPress={handleClick} message={'>'} title='siguiente'/>
-            <Button onPress={handleClickPrev} message={'>'} title='anterior'/>
+            </View>
+            <View style={styles.button}>
+            <Button style={styles.button} onPress={handleClickPrev} message={'>'} title='anterior'/>
+            </View>
             <View className="container-render">
                 {formSearch.length >= 3 && data.filter(data => data.name.toLowerCase().includes(formSearch)).map((data, i) => {
                     return (
-                        <Card name={data.name} image={data.image} key={i}></Card>
+                        <Card 
+                        name={data.name} 
+                        image={data.image} 
+                        key={i}></Card>
                     )
                 })}
                {/* {formSearch && formSearch.length < 3 &&
                     <Loading message={'Mientras buscas, tomá tu birrita (y dame 3 caracteres)'}/>}  */}
                 {!formSearch && data.map(render)}
             </View>
-            <Button onPress={handleClick} message={'<'} title='siguiente'/>
-            <Button onPress={handleClickPrev} message={'>'} title='anterior'/>
+            <View style={styles.button}>
+            <Button style={styles.button} onPress={handleClick} message={'<'} title='siguiente'/>
+            </View>
+            <View style={styles.button}>
+            <Button style={styles.button} onPress={handleClickPrev} message={'>'} title='anterior'/>
+            </View>
             </ScrollView>
 </>
     )
 }
+
+const styles = StyleSheet.create({
+    button: {
+      width: 200
+    },
+  });

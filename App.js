@@ -10,24 +10,19 @@ import generateStore from './redux/store';
 import ApolloClient from 'apollo-boost';
 import { ApolloProvider } from 'react-apollo'
 
+import Navigator from './navigation/Navigator'
+
 let store = generateStore()
 let client = new ApolloClient({
     uri:"https://rickandmortyapi.com/graphql"
 })
 
 
-
-// If you want your app to work offline and load faster, you can change
-// unregister() to register() below. Note this comes with some pitfalls.
-// Learn more about service workers: https://bit.ly/CRA-PWA
-
-/* AppRegistry.registerComponent(appName, () => WithApollo);
- */
 export default function App() {
   return (
     <ApolloProvider client={client}>
     <Provider store={store}>
-      <Main></Main>
+      <Navigator></Navigator>
     </Provider>
     </ApolloProvider> 
     
