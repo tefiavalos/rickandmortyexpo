@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 import { connect } from 'react-redux'
 import Render from '../components/Render'
 import Card from '../components/Card'
-import Search from '../components/Search'
+import PropTypes from 'prop-types';
 
 import { nextPageAction, prevPageAction } from '../redux/dataDuck'
 
@@ -17,7 +17,7 @@ const Characters = ({ nextPageAction, prevPageAction, characters, navigation }) 
 
     function renderCharacter(chars, i) {
         return (
-            <Card {...chars} key={i} navigation={navigation}/>
+            <Card {...chars} key={i} navigation={navigation} />
         )
     }
 
@@ -44,17 +44,24 @@ const Characters = ({ nextPageAction, prevPageAction, characters, navigation }) 
 
 const styles = StyleSheet.create({
     container: {
-        alignItems:'center'
+        alignItems: 'center'
     },
-    input:{
-      margin: 10,
-      borderBottomColor: 'black', 
-      borderBottomWidth: 2,
-      borderRadius: 5,
-      height: 50,
-      width: 300
+    input: {
+        margin: 10,
+        borderBottomColor: 'black',
+        borderBottomWidth: 2,
+        borderRadius: 5,
+        height: 50,
+        width: 300
     }
-  });
+});
+
+Characters.propTypes = {
+    nextPageAction: PropTypes.func,
+    prevPageAction: PropTypes.func,
+    characters: PropTypes.array,
+    navigation: PropTypes.any
+};
 
 function mapState({ data }) {
 

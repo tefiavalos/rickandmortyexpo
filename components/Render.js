@@ -1,6 +1,7 @@
 import React from 'react'
 import Card from './Card'
-/* import Loading from '../loading/Loading'  */
+import PropTypes from 'prop-types';
+
 import {
     Text,
     StyleSheet,
@@ -38,6 +39,15 @@ export default function Render({ formSearch, handleClick, render, data, handleCl
         </View>
     )
 }
+
+Render.propTypes = {
+    formSearch: PropTypes.any,
+    handleClick: PropTypes.func,
+    render: PropTypes.func,
+    data: PropTypes.any,
+    handleClickPrev: PropTypes.func
+}
+
 
 const styles = StyleSheet.create({
     container: {

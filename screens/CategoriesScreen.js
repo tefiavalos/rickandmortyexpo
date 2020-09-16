@@ -1,19 +1,17 @@
 import React, { useState } from 'react'
-import Card from '../components/Card'
+import PropTypes from 'prop-types';
 import { connect } from 'react-redux'
 import { nextPageAction, nextPageEpisodesAction, nextPageLocationAction, prevPageAction } from '../redux/dataDuck'
 
 import {
     StyleSheet,
-    ScrollView,
     View,
     Text,
     TouchableOpacity
 } from 'react-native';
 
 
-function Home({ characters, nextPageAction, location, episode, fetching,
-    nextPageEpisodesAction, nextPageLocationAction, prevPageAction, nextPage, navigation }) {
+function Home({ navigation }) {
 
     return (
         <View style={styles.container}>
@@ -46,6 +44,10 @@ function Home({ characters, nextPageAction, location, episode, fetching,
     )
 }
 
+Home.propTypes = {
+    navigation: PropTypes.any
+}
+
 function mapState({ data }) {
 
     return {
@@ -63,10 +65,10 @@ const styles = StyleSheet.create({
         alignItems: 'center',
         justifyContent: 'center'
     },
-    text:{
+    text: {
         fontSize: 25,
         margin: 10
-      },
+    },
     button: {
         width: 200,
         backgroundColor: '#9882A7',
@@ -82,5 +84,7 @@ const styles = StyleSheet.create({
         fontSize: 20
     }
 });
+
+
 
 export default connect(mapState, { nextPageAction, nextPageEpisodesAction, nextPageLocationAction, prevPageAction })(Home)

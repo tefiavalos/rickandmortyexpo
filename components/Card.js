@@ -8,6 +8,7 @@ import {
     TouchableOpacity,
     Image
 } from 'react-native';
+import PropTypes from 'prop-types';
 
 const Card = ({
     name, image, dimension, episode, navigation, id
@@ -70,6 +71,15 @@ const styles = StyleSheet.create({
         fontSize: 15
     }
 });
+
+Card.propTypes = {
+    name: PropTypes.string,
+    image: PropTypes.string,
+    dimension: PropTypes.string,
+    episode: PropTypes.string,
+    navigation: PropTypes.any,
+    id: PropTypes.string
+}
 
 function mapState({ data }) {
 
