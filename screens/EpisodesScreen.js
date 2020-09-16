@@ -6,10 +6,6 @@ import Search from '../components/Search'
 
 import { nextPageEpisodesAction, prevPageEpisodesAction } from '../redux/dataDuck'
 
-import {
-    View
-} from 'react-native';
-
 const Episodes = ({ episodes, navigation, nextPageEpisodesAction, prevPageEpisodesAction}) => {
     const [formSearch, setFormSearch] = useState('');
 
@@ -20,11 +16,11 @@ const Episodes = ({ episodes, navigation, nextPageEpisodesAction, prevPageEpisod
     }
 
     const handleChange = (text) => {
-        setFormSearch(text);
+        setFormSearch(text.toLowerCase());
     }
 
     return (
-        <View>
+        <>
         <Search handleChange={handleChange} formSearch={formSearch}></Search>
         <Render 
         handleClick={nextPageEpisodesAction} 
@@ -32,7 +28,7 @@ const Episodes = ({ episodes, navigation, nextPageEpisodesAction, prevPageEpisod
         render={renderEpisode} 
         data={episodes}
         formSearch={formSearch}></Render>
-        </View>
+        </>
 
     )
 }

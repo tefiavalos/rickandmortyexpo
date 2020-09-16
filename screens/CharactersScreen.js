@@ -4,14 +4,15 @@ import Render from '../components/Render'
 import Card from '../components/Card'
 import Search from '../components/Search'
 
-import { nextPageAction, nextPageEpisodesAction, nextPageLocationAction, prevPageAction } from '../redux/dataDuck'
+import { nextPageAction, prevPageAction } from '../redux/dataDuck'
 
 import {
     View,
     TextInput,
+    StyleSheet
 } from 'react-native';
 
-const Characters = ({ nextPageAction, nextPageEpisodesAction, nextPageLocationAction, prevPageAction, characters, navigation }) => {
+const Characters = ({ nextPageAction, prevPageAction, characters, navigation }) => {
     const [formSearch, setFormSearch] = useState('');
 
     function renderCharacter(chars, i) {
@@ -21,13 +22,13 @@ const Characters = ({ nextPageAction, nextPageEpisodesAction, nextPageLocationAc
     }
 
     const handleChange = (text) => {
-        setFormSearch(text);
+        setFormSearch(text.toLowerCase());
     }
 
     return (
         <>
-            <View>
-                <TextInput type="text" placeholder="Search" onChangeText={handleChange}
+            <View style={styles.container}>
+                <TextInput style={styles.input} type="text" placeholder="Search" onChangeText={handleChange}
                     value={formSearch} name="Characters" />
             </View>
             <Render
@@ -40,6 +41,20 @@ const Characters = ({ nextPageAction, nextPageEpisodesAction, nextPageLocationAc
 
     )
 }
+
+const styles = StyleSheet.create({
+    container: {
+        alignItems:'center'
+    },
+    input:{
+      margin: 10,
+      borderBottomColor: 'black', 
+      borderBottomWidth: 2,
+      borderRadius: 5,
+      height: 50,
+      width: 300
+    }
+  });
 
 function mapState({ data }) {
 

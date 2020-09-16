@@ -4,7 +4,8 @@ import { connect } from 'react-redux'
 import {
     Image,
     View,
-    Text
+    Text,
+    StyleSheet
   } from 'react-native';
 
 const Details = ({navigation, characters, locations, episodes}) => {
@@ -16,41 +17,53 @@ const Details = ({navigation, characters, locations, episodes}) => {
   const episodeselected = episodes.find(ep => ep.id === cid) 
 
   return(
-  <View>
-            {valor === 'Characters' && <Text>{idselected.name}</Text>}
-            {valor === 'Locations' && <Text>{locidselected.name}</Text>}
-            {valor === 'Episodes'&& <Text>{episodeselected.name}</Text>}
+  <View style={styles.container}>
+            {valor === 'Characters' && <Text style={styles.text}>{idselected.name}</Text>}
+            {valor === 'Locations' && <Text style={styles.text}>{locidselected.name}</Text>}
+            {valor === 'Episodes'&& <Text style={styles.text}>{episodeselected.name}</Text>}
             {valor === 'Characters' && <Image source={{uri: idselected.image}} style={{ width: 200, height: 200 }}/>}
-            {valor === 'Characters' && <Text>{idselected.type}</Text>}
-            {valor === 'Characters' && <Text>{idselected.gender}</Text>}
-            {valor === 'Characters' && <Text>{idselected.species}</Text>}
-            {valor === 'Episodes' && <Text>{episodeselected.species}</Text>}
-            {valor === 'Locations' && <Text>{locidselected.dimension}</Text>}
+            {valor === 'Characters' && <Text style={styles.text}>{idselected.type}</Text>}
+            {valor === 'Characters' && <Text style={styles.text}>{idselected.gender}</Text>}
+            {valor === 'Characters' && <Text style={styles.text}>{idselected.species}</Text>}
+            {valor === 'Episodes' && <Text style={styles.text}>{episodeselected.species}</Text>}
+            {valor === 'Locations' && <Text style={styles.text}>{locidselected.dimension}</Text>}
             {valor === 'Locations' && 
             <>
-            <Text>Residents:</Text>
-            <Text>{locidselected.residents.map((resident, i)=>{
+            <Text style={styles.text}>Residents:</Text>
+            <View>{locidselected.residents.map((resident, i)=>{
               if(i<5){
               return(
-                `${resident.name} - `
+                <Text key={resident.i} style={{color: '#9882A7'}}>{resident.name}</Text>
               )}
-            })}</Text>
+            })}</View>
             </>}
             {valor === 'Episodes' && 
             <>
-            <Text>Characters:</Text>
-            <Text>{episodeselected.characters.map((char, i)=>{
+            <Text style={styles.text}>Characters:</Text>
+            <View>{episodeselected.characters.map((char, i)=>{
               if(i<5){
               return(
-                `${char.name} - `
+                <Text key={char.i} style={{color: '#9882A7'}}>{char.name}</Text>
               )}
-            })}</Text>
+            })}</View>
             </>}
         </View>
        
     )
   }
 
+  const styles = StyleSheet.create({
+    container:{
+      flex: 1,
+      alignItems: 'center',
+      justifyContent: 'center',
+      backgroundColor: '#CABCD3'
+    },
+    text: {
+      fontSize: 30,
+      color: '#9882A7'
+    },
+  });
 
 function mapState({ data }) {
 

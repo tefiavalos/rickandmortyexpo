@@ -5,70 +5,73 @@ import {
     ScrollView,
     View,
     Text,
-    Modal,
-    Button,
+    TouchableOpacity,
     Image
 } from 'react-native';
 
 const Card = ({
-     name, image, dimension, episode, type, created, gender, species, residents, episodeCharacter, navigation, id, value,
-     locationsid, charactersid
+    name, image, dimension, episode, navigation, id
 }) => {
-
     const [modal, setModal] = useState(false)
-    console.log(navigation.state.routeName)
     return (
         <>
             <ScrollView>
-                <View className="container">
-                    <Text>
+                <View style={styles.container}>
+                    {image ? <Image className="data-image" alt={name} source={{ uri: image }} style={{ width: 100, height: 100 }} /> :
+                        <Text >{dimension || episode}</Text>}
+                    <Text style={styles.text}>
                         {name}
                     </Text>
-                    {image ? <Image className="data-image" alt={name} source={{ uri: image }} style={{ width: 200, height: 200 }} /> :
-                        <Text >{dimension || episode}</Text>}
-                        <Button onPress={()=>{
-                navigation.navigate({routeName: 'Details', params: {
-                    cid: id,
-                    valor: navigation.state.routeName
-                }});}}  title='see more'/>
-                    </View> 
+                    <TouchableOpacity style={styles.button} onPress={() => {
+                        navigation.navigate({
+                            routeName: 'Details', params: {
+                                cid: id,
+                                valor: navigation.state.routeName
+                            }
+                        });
+                    }}>
+                        <Text style={styles.textButton}>+</Text>
+                    </TouchableOpacity>
+                </View>
             </ScrollView>
-            <Modal visible={modal} animationType='fade'>
-                        <Text>{type}</Text>
-                        <Text>{created}</Text>
-                        <Text>{gender}</Text>
-                        <Text>{species}</Text>
-                        {image && <Image className="data-image" alt={name} source={{ uri: image }} style={{ width: 200, height: 200 }} />}
-                        {residents && residents.map((resident, i) => {
-                            if(i < 5){
-                                return(
-                                    <Text key={i}>{resident.name}</Text>
-                                )
-                            }
-                        })}
-                        {episodeCharacter && episodeCharacter.map((character, i) => {
-                            if(i < 5){
-                                return(
-                                <Text key={i}>{character.name}</Text>
-                                )
-                            }
-                        })} 
-                        <View style={styles.button}>
-                        <Button onPress={() => { return (setModal(false)) }} title='cerrar'></Button>
-                    </View>
-                    </Modal>
-                    
+
         </>
     )
 }
 
 const styles = StyleSheet.create({
-                button: {
-                width: 200
+    container: {
+        width: 350,
+        height: 100,
+        flexDirection: 'row',
+        justifyContent: 'space-between',
+        alignItems: 'center',
+        marginBottom: 20,
+        backgroundColor: '#CABCD3',
+        borderRadius: 5
     },
-  });
+    text: {
+        fontSize: 12,
+        textAlign: 'center'
+    },
+    button: {
+        width: 30,
+        height: 30,
+        backgroundColor: '#9882A7',
+        color: '#eee',
+        padding: 5,
+        borderRadius: 30,
+        marginRight: 5
+    },
+    textButton: {
+        textAlign: 'center',
+        color: '#eee',
+        fontWeight: '600',
+        fontSize: 15
+    }
+});
 
-  function mapState({ data }) {
+function mapState({ data }) {
 
     return {
         episodesid: data.episode.id,

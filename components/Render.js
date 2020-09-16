@@ -2,51 +2,66 @@ import React from 'react'
 import Card from './Card'
 /* import Loading from '../loading/Loading'  */
 import {
-    SafeAreaView,
+    Text,
     StyleSheet,
     ScrollView,
     View,
-    Text,
-    StatusBar,
+    TouchableOpacity,
     Button
-  } from 'react-native';
+} from 'react-native';
 
-export default function Render({  formSearch, handleClick, render, data, handleClickPrev }) {
+
+export default function Render({ formSearch, handleClick, render, data, handleClickPrev }) {
     return (
-        <>
-        <ScrollView style={styles.button}>
-            <View>
-            <Button onPress={handleClick} message={'>'} title='siguiente'/>
-            </View>
-            <View style={styles.button}>
-            <Button style={styles.button} onPress={handleClickPrev} message={'>'} title='anterior'/>
-            </View>
-            <View className="container-render">
-                {formSearch.length >= 3 && data.filter(data => data.name.toLowerCase().includes(formSearch)).map((data, i) => {
-                    return (
-                        <Card 
-                        name={data.name} 
-                        image={data.image} 
-                        key={i}></Card>
-                    )
-                })}
-               {/* {formSearch && formSearch.length < 3 &&
-                    <Loading message={'Mientras buscas, tomá tu birrita (y dame 3 caracteres)'}/>}  */}
-                {!formSearch && data.map(render)}
-            </View>
-            <View style={styles.button}>
-            <Button style={styles.button} onPress={handleClick} message={'<'} title='siguiente'/>
-            </View>
-            <View style={styles.button}>
-            <Button style={styles.button} onPress={handleClickPrev} message={'>'} title='anterior'/>
-            </View>
+        <View style={styles.container}>
+            <ScrollView>
+                <View style={styles.containerButton}>
+                    <TouchableOpacity onPress={handleClickPrev} style={styles.button}>
+                        <Text style={styles.textButton}>Anterior</Text>
+                    </TouchableOpacity>
+                    <TouchableOpacity style={styles.button} onPress={handleClick}>
+                        <Text style={styles.textButton}>Siguiente</Text>
+                    </TouchableOpacity>
+                </View>
+                <View>
+                    {formSearch.length >= 3 && data.filter(data => data.name.toLowerCase().includes(formSearch)).map((data, i) => {
+                        return (
+                            <Card
+                                name={data.name}
+                                image={data.image}
+                                key={i}></Card>
+                        )
+                    })}
+                    {!formSearch && data.map(render)}
+                </View>
             </ScrollView>
-</>
+        </View>
     )
 }
 
 const styles = StyleSheet.create({
-    button: {
-      width: 200
+    container: {
+        flex: 1,
+        alignItems: 'center'
     },
-  });
+    containerButton: {
+        width: 'auto',
+        flexDirection: 'row',
+        justifyContent: 'center'
+    },
+    button: {
+        width: 100,
+        backgroundColor: '#9882A7',
+        color: '#eee',
+        padding: 5,
+        borderRadius: 5,
+        marginRight: 5,
+        marginBottom: 15,
+    },
+    textButton: {
+        textAlign: 'center',
+        color: '#eee',
+        fontWeight: '600',
+        fontSize: 20
+    }
+});

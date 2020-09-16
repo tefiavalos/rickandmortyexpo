@@ -21,7 +21,7 @@ const Locations = ({ locations, navigation, prevPageLocationAction, nextPageLoca
     }
 
     const handleChange = (text) => {
-        setFormSearch(text);
+        setFormSearch(text.toLowerCase());
     }
 
     return (

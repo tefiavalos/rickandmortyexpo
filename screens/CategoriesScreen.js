@@ -1,7 +1,4 @@
 import React, { useState } from 'react'
-import Filter from '../components/Filter'
-import Search from '../components/Search'
-/* import Render from '../components/Render'  */
 import Card from '../components/Card'
 import { connect } from 'react-redux'
 import { nextPageAction, nextPageEpisodesAction, nextPageLocationAction, prevPageAction } from '../redux/dataDuck'
@@ -11,67 +8,41 @@ import {
     ScrollView,
     View,
     Text,
-    Button,
-    TextInput
-  } from 'react-native';
+    TouchableOpacity
+} from 'react-native';
 
 
-function Home( { characters, nextPageAction, location, episode, fetching, 
+function Home({ characters, nextPageAction, location, episode, fetching,
     nextPageEpisodesAction, nextPageLocationAction, prevPageAction, nextPage, navigation }) {
-      let [valor, setValor] = useState("characters")
-    const [formSearch, setFormSearch] = useState('');
-
-    function renderCharacter(chars, i) {
-        return (
-            
-            <Card {...chars} key={i} navigation={navigation}/>
-       
-        )
-    }
-
-    function renderLocation(location, i) {
-        return (
-  
-            <Card {...location} key={i} />
-
-        )
-    }
-
-    function renderEpisode(episode, i) {
-        return (
-        
-            <Card {...episode} episodeCharacter={episode.characters} key={i} />
-         
-        )
-    }
-
-    const handleChange = (text) => {
-        setFormSearch(text);
-    } 
 
     return (
-        <ScrollView>
         <View style={styles.container}>
-        <View style={styles.containerButtons}>
+            <Text style={styles.text}>Qué querés buscar?</Text>
+            <View style={styles.containerButtons}>
                 <View style={styles.button}>
-                <Button onPress={() =>{
-                        setValor("characters")
-                        navigation.navigate({routeName: 'Characters'})}} value="characters" title='characters'/>
+                    <TouchableOpacity onPress={() => {
+                        navigation.navigate({ routeName: 'Characters' })
+                    }} value="characters">
+                        <Text style={styles.textButton}>Characters</Text>
+                    </TouchableOpacity>
                 </View>
                 <View style={styles.button}>
-                <Button onPress={() =>{
-                        setValor("locations")
-                        navigation.navigate({routeName: 'Locations'})}} value="location" title='locations'/>
+                    <TouchableOpacity onPress={() => {
+                        navigation.navigate({ routeName: 'Locations' })
+                    }} value="location" >
+                        <Text style={styles.textButton}>Locations</Text>
+                    </TouchableOpacity>
                 </View>
                 <View style={styles.button}>
-                <Button onPress={() =>{
-                        setValor("episodes")
-                        navigation.navigate({routeName: 'Episodes'})}}  title='episodes'/>
+                    <TouchableOpacity onPress={() => {
+                        navigation.navigate({ routeName: 'Episodes' })
+                    }} >
+                        <Text style={styles.textButton}>Episodes</Text>
+                    </TouchableOpacity>
                 </View>
+            </View>
         </View>
-            
-        </View> 
-        </ScrollView>
+
     )
 }
 
@@ -88,15 +59,28 @@ function mapState({ data }) {
 
 const styles = StyleSheet.create({
     container: {
-        alignItems: 'center'
+        flex: 1,
+        alignItems: 'center',
+        justifyContent: 'center'
     },
-    containerButtons: {
-        width: '100%',
-        flexDirection: 'row'
-    },
+    text:{
+        fontSize: 25,
+        margin: 10
+      },
     button: {
-      width: 120
+        width: 200,
+        backgroundColor: '#9882A7',
+        color: '#eee',
+        padding: 5,
+        borderRadius: 5,
+        margin: 10
     },
-  });
+    textButton: {
+        textAlign: 'center',
+        color: '#eee',
+        fontWeight: '600',
+        fontSize: 20
+    }
+});
 
 export default connect(mapState, { nextPageAction, nextPageEpisodesAction, nextPageLocationAction, prevPageAction })(Home)
