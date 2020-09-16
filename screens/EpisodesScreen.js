@@ -4,21 +4,18 @@ import Render from '../components/Render'
 import Card from '../components/Card'
 import Search from '../components/Search'
 
-import { nextPageAction, nextPageEpisodesAction, nextPageLocationAction, prevPageAction } from '../redux/dataDuck'
+import { nextPageEpisodesAction, prevPageEpisodesAction } from '../redux/dataDuck'
 
 import {
-    View,
-    TextInput,
+    View
 } from 'react-native';
 
-const Episodes = ({ episodes, }) => {
+const Episodes = ({ episodes, navigation, nextPageEpisodesAction, prevPageEpisodesAction}) => {
     const [formSearch, setFormSearch] = useState('');
 
     function renderEpisode(episode, i) {
         return (
-        
-            <Card {...episode} episodeCharacter={episode.characters} key={i} />
-         
+            <Card {...episode} episodeCharacter={episode.characters} key={i} navigation={navigation}/>         
         )
     }
 
@@ -31,6 +28,7 @@ const Episodes = ({ episodes, }) => {
         <Search handleChange={handleChange} formSearch={formSearch}></Search>
         <Render 
         handleClick={nextPageEpisodesAction} 
+        handleClickPrev={prevPageEpisodesAction}
         render={renderEpisode} 
         data={episodes}
         formSearch={formSearch}></Render>
@@ -47,4 +45,4 @@ function mapState({ data }) {
 }
 
 
-export default connect(mapState, { nextPageAction, prevPageAction, nextPageEpisodesAction })(Episodes)
+export default connect(mapState, { prevPageEpisodesAction, nextPageEpisodesAction })(Episodes)

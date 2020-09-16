@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import Filter from '../components/Filter'
 import Search from '../components/Search'
-import Render from '../components/Render' 
+/* import Render from '../components/Render'  */
 import Card from '../components/Card'
 import { connect } from 'react-redux'
 import { nextPageAction, nextPageEpisodesAction, nextPageLocationAction, prevPageAction } from '../redux/dataDuck'
@@ -24,7 +24,7 @@ function Home( { characters, nextPageAction, location, episode, fetching,
     function renderCharacter(chars, i) {
         return (
             
-            <Card {...chars} key={i} />
+            <Card {...chars} key={i} navigation={navigation}/>
        
         )
     }

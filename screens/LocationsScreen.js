@@ -4,21 +4,19 @@ import Render from '../components/Render'
 import Card from '../components/Card'
 import Search from '../components/Search'
 
-import { nextPageAction, nextPageEpisodesAction, nextPageLocationAction, prevPageAction } from '../redux/dataDuck'
+import { prevPageLocationAction, nextPageLocationAction } from '../redux/dataDuck'
 
 import {
     View,
     TextInput,
 } from 'react-native';
 
-const Locations = ({ locations }) => {
+const Locations = ({ locations, navigation, prevPageLocationAction, nextPageLocationAction }) => {
     const [formSearch, setFormSearch] = useState('');
 
     function renderLocations(location, i) {
         return (
-        
-            <Card {...location}  key={i} />
-         
+            <Card {...location}  key={i} navigation={navigation}/>
         )
     }
 
@@ -31,6 +29,7 @@ const Locations = ({ locations }) => {
             <Search handleChange={handleChange} formSearch={formSearch}></Search>
             <Render 
             handleClick={nextPageLocationAction} 
+            handleClickPrev={prevPageLocationAction}
             render={renderLocations}
             data={locations}
             formSearch={formSearch}></Render>
@@ -47,4 +46,4 @@ function mapState({ data }) {
 }
 
 
-export default connect(mapState, { prevPageAction, nextPageLocationAction })(Locations)
+export default connect(mapState, { prevPageLocationAction, nextPageLocationAction })(Locations)

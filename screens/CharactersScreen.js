@@ -11,12 +11,12 @@ import {
     TextInput,
 } from 'react-native';
 
-const Characters = ({ nextPageAction, nextPageEpisodesAction, nextPageLocationAction, prevPageAction, characters }) => {
+const Characters = ({ nextPageAction, nextPageEpisodesAction, nextPageLocationAction, prevPageAction, characters, navigation }) => {
     const [formSearch, setFormSearch] = useState('');
 
     function renderCharacter(chars, i) {
         return (
-            <Card {...chars} key={i} />
+            <Card {...chars} key={i} navigation={navigation}/>
         )
     }
 
@@ -35,7 +35,6 @@ const Characters = ({ nextPageAction, nextPageEpisodesAction, nextPageLocationAc
                 handleClick={nextPageAction}
                 render={renderCharacter}
                 data={characters}
-                /* valor={valor} */
                 formSearch={formSearch}></Render>
         </>
 

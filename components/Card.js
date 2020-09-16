@@ -1,6 +1,5 @@
 import React, { useState } from 'react'
-
-
+import { connect } from 'react-redux'
 import {
     StyleSheet,
     ScrollView,
@@ -11,12 +10,13 @@ import {
     Image
 } from 'react-native';
 
-export default function Card({
-    name, image, dimension, episode, type, created, gender, species, residents, episodeCharacter
-}) {
+const Card = ({
+     name, image, dimension, episode, type, created, gender, species, residents, episodeCharacter, navigation, id, value,
+     locationsid, charactersid
+}) => {
 
     const [modal, setModal] = useState(false)
-
+    console.log(navigation.state.routeName)
     return (
         <>
             <ScrollView>
@@ -26,7 +26,11 @@ export default function Card({
                     </Text>
                     {image ? <Image className="data-image" alt={name} source={{ uri: image }} style={{ width: 200, height: 200 }} /> :
                         <Text >{dimension || episode}</Text>}
-                        <Button className='button-card'  onPress={() => {setModal(true)}}  title='see more'/>
+                        <Button onPress={()=>{
+                navigation.navigate({routeName: 'Details', params: {
+                    cid: id,
+                    valor: navigation.state.routeName
+                }});}}  title='see more'/>
                     </View> 
             </ScrollView>
             <Modal visible={modal} animationType='fade'>
@@ -63,3 +67,15 @@ const styles = StyleSheet.create({
                 width: 200
     },
   });
+
+  function mapState({ data }) {
+
+    return {
+        episodesid: data.episode.id,
+        charactersid: data.character.id,
+        locationsid: data.location.id,
+    }
+}
+
+
+export default connect(mapState)(Card)
