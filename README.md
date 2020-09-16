@@ -4,5 +4,5 @@
 <img src='./assets/Resultado2.jpeg'>
 <img src='./assets/Resultado3.jpeg'>
 <img src='./assets/Resultado4.jpeg'>
-<img src='./assets/resultado5.jpeg'>
+<img src='./assets/Resultado5.jpeg'>
 
