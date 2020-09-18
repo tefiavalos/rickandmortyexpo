@@ -1,11 +1,11 @@
 import React, { useState } from 'react'
 import { connect } from 'react-redux'
+import CardButton from './CardButton'
 import {
     StyleSheet,
     ScrollView,
     View,
     Text,
-    TouchableOpacity,
     Image
 } from 'react-native';
 import PropTypes from 'prop-types';
@@ -13,6 +13,17 @@ import PropTypes from 'prop-types';
 const Card = ({
     name, image, dimension, episode, navigation, id
 }) => {
+
+    const handleClick = () => {
+        return(
+        navigation.navigate({
+            routeName: 'Details', params: {
+                cid: id,
+                valor: navigation.state.routeName
+            }
+        }))
+    }
+
     return (
         <>
             <ScrollView>
@@ -22,16 +33,7 @@ const Card = ({
                     <Text style={styles.text}>
                         {name}
                     </Text>
-                    <TouchableOpacity style={styles.button} onPress={() => {
-                        navigation.navigate({
-                            routeName: 'Details', params: {
-                                cid: id,
-                                valor: navigation.state.routeName
-                            }
-                        });
-                    }}>
-                        <Text style={styles.textButton}>+</Text>
-                    </TouchableOpacity>
+                    <CardButton style={styles.button} handleClick={handleClick} text={'+'}/>
                 </View>
             </ScrollView>
 
@@ -57,21 +59,6 @@ const styles = StyleSheet.create({
     text: {
         fontSize: 12,
         textAlign: 'center'
-    },
-    button: {
-        width: 30,
-        height: 30,
-        backgroundColor: '#9882A7',
-        color: '#eee',
-        padding: 5,
-        borderRadius: 30,
-        marginRight: 5
-    },
-    textButton: {
-        textAlign: 'center',
-        color: '#eee',
-        fontWeight: '600',
-        fontSize: 15
     }
 });
 

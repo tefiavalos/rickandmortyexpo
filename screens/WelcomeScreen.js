@@ -1,9 +1,9 @@
 import React from 'react'
+import GeneralButton from '../components/GeneralButton'
 import {
   View,
   Text,
-  StyleSheet,
-  TouchableOpacity
+  StyleSheet
 } from 'react-native';
 
 const Welcome = props => {
@@ -14,11 +14,9 @@ const Welcome = props => {
     <View style={styles.container}>
       <Text style={styles.text}>REACT NATIVE PROJECT</Text>
       <Text style={styles.text}>Estefania Avalos</Text>
-      <TouchableOpacity style={styles.button} onPress={() => {
-        props.navigation.navigate({ routeName: 'Categories' });
-      }}>
-        <Text style={styles.textButton}>Enter</Text>
-      </TouchableOpacity>
+      <GeneralButton handleClick={() => {props.navigation.navigate({ routeName: 'Categories' });
+      }}
+      text={'Entrar'}/>
       <Text style={styles.text}>{date}</Text>
     </View>
 

@@ -1,5 +1,5 @@
 import React from 'react'
-import Card from './Card'
+import PaginationButton from './PaginationButton'
 import PropTypes from 'prop-types';
 
 import {
@@ -12,17 +12,13 @@ import {
 } from 'react-native';
 
 
-const Render = ({ formSearch, handleClick, render, data, handleClickPrev }) => {
+const Render = ({ formSearch, handleClick, handleClickPrev, render, data,  }) => {
     return (
         <View style={styles.container}>
             <ScrollView>
                 <View style={styles.containerButton}>
-                    <TouchableOpacity onPress={handleClickPrev} style={styles.button}>
-                        <Text style={styles.textButton}>Anterior</Text>
-                    </TouchableOpacity>
-                    <TouchableOpacity style={styles.button} onPress={handleClick}>
-                        <Text style={styles.textButton}>Siguiente</Text>
-                    </TouchableOpacity>
+                    <PaginationButton handleClickButton={handleClickPrev} text={'Anterior'}/>
+                    <PaginationButton handleClickButton={handleClick} text={'Siguiente'}/>
                 </View>
                 <View>
                     {formSearch.length >= 3 && data.filter(data => data.name.toLowerCase().includes(formSearch)).map(render)}
@@ -52,21 +48,6 @@ const styles = StyleSheet.create({
         flexDirection: 'row',
         justifyContent: 'center'
     },
-    button: {
-        width: 100,
-        backgroundColor: '#9882A7',
-        color: '#eee',
-        padding: 5,
-        borderRadius: 5,
-        marginRight: 5,
-        marginBottom: 15,
-    },
-    textButton: {
-        textAlign: 'center',
-        color: '#eee',
-        fontWeight: '600',
-        fontSize: 20
-    }
 });
 
 export default Render

@@ -1,5 +1,6 @@
-import React, { useState } from 'react'
+import React from 'react'
 import PropTypes from 'prop-types';
+import GeneralButton from '../components/GeneralButton'
 import { connect } from 'react-redux'
 import { nextPageAction, nextPageEpisodesAction, nextPageLocationAction, prevPageAction } from '../redux/dataDuck'
 
@@ -17,27 +18,17 @@ const Home = ({ navigation }) => {
         <View style={styles.container}>
             <Text style={styles.text}>Qué querés buscar?</Text>
             <View style={styles.containerButtons}>
-                <View style={styles.button}>
-                    <TouchableOpacity onPress={() => {
-                        navigation.navigate({ routeName: 'Characters' })
-                    }} value="characters">
-                        <Text style={styles.textButton}>Characters</Text>
-                    </TouchableOpacity>
-                </View>
-                <View style={styles.button}>
-                    <TouchableOpacity onPress={() => {
-                        navigation.navigate({ routeName: 'Locations' })
-                    }} value="location" >
-                        <Text style={styles.textButton}>Locations</Text>
-                    </TouchableOpacity>
-                </View>
-                <View style={styles.button}>
-                    <TouchableOpacity onPress={() => {
-                        navigation.navigate({ routeName: 'Episodes' })
-                    }} >
-                        <Text style={styles.textButton}>Episodes</Text>
-                    </TouchableOpacity>
-                </View>
+                <GeneralButton handleClick={() => { navigation.navigate({ routeName: 'Characters' }) }}
+                    value="characters"
+                    text="Characters" />
+
+                <GeneralButton handleClick={() => { navigation.navigate({ routeName: 'Locations' }) }}
+                    value="location"
+                    text='Locations' />
+
+                <GeneralButton handleClick={() => { navigation.navigate({ routeName: 'Episodes' }) }}
+                    value="episode"
+                    text='Episodes' />
             </View>
         </View>
 

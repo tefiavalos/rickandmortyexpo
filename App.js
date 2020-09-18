@@ -1,13 +1,9 @@
 import React from 'react';
-import { StyleSheet, Text, View } from 'react-native';
 
-import {AppRegistry} from 'react-native';
-import {name as appName} from './app.json';
 import { Provider } from 'react-redux';
 import generateStore from './redux/store';
 import ApolloClient from 'apollo-boost';
 import { ApolloProvider } from 'react-apollo'
-
 import Navigator from './navigation/Navigator'
 
 let store = generateStore()
@@ -26,14 +22,4 @@ const App = () => {
     
   );
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-});
-
 export default App
