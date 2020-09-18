@@ -16,7 +16,7 @@ let client = new ApolloClient({
 })
 
 
-export default function App() {
+const App = () => {
   return (
     <ApolloProvider client={client}>
     <Provider store={store}>
@@ -35,3 +35,5 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
   },
 });
+
+export default App

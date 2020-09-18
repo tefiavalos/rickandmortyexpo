@@ -12,7 +12,7 @@ import {
 } from 'react-native';
 
 
-export default function Render({ formSearch, handleClick, render, data, handleClickPrev }) {
+const Render = ({ formSearch, handleClick, render, data, handleClickPrev }) => {
     return (
         <View style={styles.container}>
             <ScrollView>
@@ -25,14 +25,7 @@ export default function Render({ formSearch, handleClick, render, data, handleCl
                     </TouchableOpacity>
                 </View>
                 <View>
-                    {formSearch.length >= 3 && data.filter(data => data.name.toLowerCase().includes(formSearch)).map((data, i) => {
-                        return (
-                            <Card
-                                name={data.name}
-                                image={data.image}
-                                key={i}></Card>
-                        )
-                    })}
+                    {formSearch.length >= 3 && data.filter(data => data.name.toLowerCase().includes(formSearch)).map(render)}
                     {!formSearch && data.map(render)}
                 </View>
             </ScrollView>
@@ -75,3 +68,5 @@ const styles = StyleSheet.create({
         fontSize: 20
     }
 });
+
+export default Render

@@ -11,7 +11,7 @@ import {
 } from 'react-native';
 
 
-function Home({ navigation }) {
+const Home = ({ navigation }) => {
 
     return (
         <View style={styles.container}>

@@ -6,7 +6,7 @@ import {
 } from 'react-native';
 import PropTypes from 'prop-types';
 
-export default function Search({ handleChange, formSearch }) {
+const Search = ({ handleChange, formSearch }) => {
   return (
     <View style={styles.container}>
       <TextInput style={styles.input} type="text" placeholder="Search" onChangeText={handleChange}
@@ -34,3 +34,5 @@ const styles = StyleSheet.create({
     width: 300
   }
 });
+
+export default Search

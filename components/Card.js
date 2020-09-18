@@ -13,12 +13,11 @@ import PropTypes from 'prop-types';
 const Card = ({
     name, image, dimension, episode, navigation, id
 }) => {
-    const [modal, setModal] = useState(false)
     return (
         <>
             <ScrollView>
                 <View style={styles.container}>
-                    {image ? <Image className="data-image" alt={name} source={{ uri: image }} style={{ width: 100, height: 100 }} /> :
+                    {image ? <Image className="data-image" alt={name} source={{ uri: image }} style={styles.image} /> :
                         <Text >{dimension || episode}</Text>}
                     <Text style={styles.text}>
                         {name}
@@ -50,6 +49,10 @@ const styles = StyleSheet.create({
         marginBottom: 20,
         backgroundColor: '#CABCD3',
         borderRadius: 5
+    },
+    image: {
+        width: 100, 
+        height: 100 
     },
     text: {
         fontSize: 12,
