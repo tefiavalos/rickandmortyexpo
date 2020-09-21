@@ -4,6 +4,7 @@ import Render from '../components/Render'
 import Card from '../components/Card'
 import Search from '../components/Search'
 import PropTypes from 'prop-types';
+import {StyleSheet, View} from 'react-native'
 
 
 import { nextPageEpisodesAction, prevPageEpisodesAction } from '../redux/dataDuck'
@@ -23,7 +24,9 @@ const Episodes = ({ episodes, navigation, nextPageEpisodesAction, prevPageEpisod
 
     return (
         <>
+            <View style={styles.container}>
             <Search handleChange={handleChange} formSearch={formSearch}></Search>
+            </View>
             <Render
                 handleClick={nextPageEpisodesAction}
                 handleClickPrev={prevPageEpisodesAction}
@@ -35,6 +38,11 @@ const Episodes = ({ episodes, navigation, nextPageEpisodesAction, prevPageEpisod
     )
 }
 
+const styles = StyleSheet.create({
+    container: {
+        backgroundColor: '#DDB796'
+    }
+})
 
 Episodes.propTypes = {
     episodes: PropTypes.array,

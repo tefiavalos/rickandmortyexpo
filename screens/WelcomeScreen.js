@@ -28,24 +28,13 @@ const styles = StyleSheet.create({
     flex: 1,
     alignItems: 'center',
     justifyContent: 'center',
+    backgroundColor: '#DDB796'
   },
   text: {
     fontSize: 25,
-    margin: 10
-  },
-  button: {
-    width: 100,
-    backgroundColor: '#9882A7',
-    color: '#eee',
-    padding: 5,
-    borderRadius: 5,
-    margin: 10
-  },
-  textButton: {
-    textAlign: 'center',
-    color: '#eee',
-    fontWeight: '600',
-    fontSize: 20
+    margin: 10,
+    color: '#796589',
+    fontFamily: 'kufam'
   }
 });
 

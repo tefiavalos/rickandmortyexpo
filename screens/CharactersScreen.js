@@ -2,7 +2,8 @@ import React, { useState } from 'react'
 import { connect } from 'react-redux'
 import Render from '../components/Render'
 import Card from '../components/Card'
-import PropTypes from 'prop-types';
+import PropTypes from 'prop-types'
+import Search from '../components/Search'
 
 import { nextPageAction, prevPageAction } from '../redux/dataDuck'
 
@@ -28,8 +29,7 @@ const Characters = ({ nextPageAction, prevPageAction, characters, navigation }) 
     return (
         <>
             <View style={styles.container}>
-                <TextInput style={styles.input} type="text" placeholder="Search" onChangeText={handleChange}
-                    value={formSearch} name="Characters" />
+            <Search handleChange={handleChange} formSearch={formSearch}></Search>
             </View>
             <Render
                 handleClickPrev={prevPageAction}
@@ -44,7 +44,8 @@ const Characters = ({ nextPageAction, prevPageAction, characters, navigation }) 
 
 const styles = StyleSheet.create({
     container: {
-        alignItems: 'center'
+        alignItems: 'center',
+        backgroundColor: '#DDB796'
     },
     input: {
         margin: 10,
@@ -52,7 +53,8 @@ const styles = StyleSheet.create({
         borderBottomWidth: 2,
         borderRadius: 5,
         height: 50,
-        width: 300
+        width: 300,
+        fontFamily: 'kufam'
     }
 });
 

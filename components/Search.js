@@ -31,7 +31,8 @@ const styles = StyleSheet.create({
     borderBottomWidth: 2,
     borderRadius: 5,
     height: 50,
-    width: 300
+    width: 300,
+    fontFamily: 'kufam'
   }
 });
 

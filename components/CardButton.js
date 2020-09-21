@@ -16,18 +16,19 @@ const GeneralButton = ({text, handleClick}) => {
 const styles = StyleSheet.create({
     textButton: {
         textAlign: 'center',
-        color: '#eee',
+        color: '#DDB796',
         fontWeight: '600',
         fontSize: 15
     },
     button: {
         width: 30,
         height: 30,
-        backgroundColor: '#9882A7',
+        backgroundColor: '#796589',
         color: '#eee',
         padding: 5,
         borderRadius: 30,
-        marginRight: 5
+        marginRight: 5,
+        fontFamily: 'kufam'
     }
 })
 

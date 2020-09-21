@@ -29,7 +29,7 @@ const Card = ({
             <ScrollView>
                 <View style={styles.container}>
                     {image ? <Image className="data-image" alt={name} source={{ uri: image }} style={styles.image} /> :
-                        <Text >{dimension || episode}</Text>}
+                        <Text style={styles.text}>{dimension || episode}</Text>}
                     <Text style={styles.text}>
                         {name}
                     </Text>
@@ -49,7 +49,7 @@ const styles = StyleSheet.create({
         justifyContent: 'space-between',
         alignItems: 'center',
         marginBottom: 20,
-        backgroundColor: '#CABCD3',
+        backgroundColor: '#D2A884',
         borderRadius: 5
     },
     image: {
@@ -58,7 +58,9 @@ const styles = StyleSheet.create({
     },
     text: {
         fontSize: 12,
-        textAlign: 'center'
+        textAlign: 'center',
+        fontFamily: 'kufam',
+        color: '#796589'
     }
 });
 

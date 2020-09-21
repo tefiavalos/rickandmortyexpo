@@ -17,7 +17,7 @@ const styles = StyleSheet.create({
 
     button: {
         width: 100,
-        backgroundColor: '#9882A7',
+        backgroundColor: '#796589',
         color: '#eee',
         padding: 5,
         borderRadius: 5,
@@ -26,9 +26,10 @@ const styles = StyleSheet.create({
     },
     textButton: {
         textAlign: 'center',
-        color: '#eee',
+        color: '#DDB796',
         fontWeight: '600',
-        fontSize: 20
+        fontSize: 15,
+        fontFamily: 'kufam'
     }
 });
 

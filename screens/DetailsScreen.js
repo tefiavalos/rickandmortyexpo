@@ -71,7 +71,7 @@ const styles = StyleSheet.create({
     flex: 1,
     alignItems: 'center',
     justifyContent: 'center',
-    backgroundColor: '#CABCD3'
+    backgroundColor: '#DDB796'
   },
   image: {
 width:200,
@@ -79,7 +79,8 @@ height: 200
   },
   text: {
     fontSize: 30,
-    color: '#9882A7'
+    color: '#796589',
+    fontFamily: 'kufam'
   },
 });
 

@@ -3,16 +3,13 @@ import PaginationButton from './PaginationButton'
 import PropTypes from 'prop-types';
 
 import {
-    Text,
     StyleSheet,
     ScrollView,
     View,
-    TouchableOpacity,
-    Button
 } from 'react-native';
 
 
-const Render = ({ formSearch, handleClick, handleClickPrev, render, data,  }) => {
+const Render = ({ formSearch, handleClick, handleClickPrev, render, data }) => {
     return (
         <View style={styles.container}>
             <ScrollView>
@@ -41,7 +38,8 @@ Render.propTypes = {
 const styles = StyleSheet.create({
     container: {
         flex: 1,
-        alignItems: 'center'
+        alignItems: 'center',
+        backgroundColor: '#DDB796'
     },
     containerButton: {
         width: 'auto',
