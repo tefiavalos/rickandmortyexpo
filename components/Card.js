@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import { connect } from 'react-redux'
-import CardButton from './CardButton'
+import GeneralButton from './GeneralButton'
 import {
     StyleSheet,
     ScrollView,
@@ -33,7 +33,7 @@ const Card = ({
                     <Text style={styles.text}>
                         {name}
                     </Text>
-                    <CardButton style={styles.button} handleClick={handleClick} text={'+'}/>
+                    <GeneralButton style={styles.button} handleClick={handleClick} text={'+'}/>
                 </View>
             </ScrollView>
 
