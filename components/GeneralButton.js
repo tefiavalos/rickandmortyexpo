@@ -6,10 +6,10 @@ import {
     StyleSheet
 } from 'react-native'
 
-const GeneralButton = ({text, handleClick}) => {
+const GeneralButton = ({text, handleClick, style}) => {
     return(
         <View>
-        <TouchableOpacity style={styles.button} onPress={handleClick}>
+        <TouchableOpacity style={[styles.button, style]} onPress={handleClick}>
             <Text style={styles.textButton}>{text}</Text>
         </TouchableOpacity>
         </View>
@@ -18,6 +18,8 @@ const GeneralButton = ({text, handleClick}) => {
 
 const styles = StyleSheet.create({
     button: {
+        justifyContent: 'center',
+        alignItems: 'center',
         width: 200,
         backgroundColor: '#796589',
         color: '#eee',
@@ -26,7 +28,6 @@ const styles = StyleSheet.create({
         margin: 10
     },
     textButton: {
-        textAlign: 'center',
         color: '#DDB796',
         fontWeight: '600',
         fontSize: 20,

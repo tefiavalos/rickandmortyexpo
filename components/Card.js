@@ -52,6 +52,12 @@ const styles = StyleSheet.create({
         backgroundColor: '#D2A884',
         borderRadius: 5
     },
+    button: {
+        width: 30,
+        height: 30,
+        borderRadius: 50,
+        paddingTop: 10
+    },
     image: {
         width: 100, 
         height: 100 
